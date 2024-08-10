@@ -1,0 +1,1 @@
+javascript: import("https://liderubcgdev.github.io/BFH-bookmarklet-ShopMemoria/export.min.js").then(m => m.default());

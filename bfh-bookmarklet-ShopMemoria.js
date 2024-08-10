@@ -1,4 +1,4 @@
-javascript:(function(){
+export default () => {
   function getStatusValues(item) {
     const statusElements = item.querySelectorAll('.unitParams__item');
     const status = {};
@@ -265,4 +265,4 @@ javascript:(function(){
     createDataTableDiv(pageData);
   });
 
-})();
+};
