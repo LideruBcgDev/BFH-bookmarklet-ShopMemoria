@@ -1,35 +1,23 @@
 export default () => {
   function getStatusValues(item) {
-    const statusElements = item.querySelectorAll('.unitParams__item');
     const status = {};
     
-    statusElements.forEach((element) => {
-      const label = element.querySelector('span').innerText;
-      const value = element.querySelector('.unitParams__item__value').innerText;
+    const params = {
+      HP: 'hp',
+      PHY: 'phy',
+      INT: 'int',
+      VIT: 'vit',
+      MND: 'mnd',
+      AGI: 'agi'
+    };
 
-      switch (label) {
-        case 'HP':
-          status.HP = parseInt(value, 10);
-          break;
-        case '攻撃':
-          status.PHY = parseInt(value, 10);
-          break;
-        case '魔攻':
-          status.INT = parseInt(value, 10);
-          break;
-        case '防御':
-          status.VIT = parseInt(value, 10);
-          break;
-        case '魔防':
-          status.MND = parseInt(value, 10);
-          break;
-        case '敏捷':
-          status.AGI = parseInt(value, 10);
-          break;
-        default:
-          break;
+    Object.keys(params).forEach(key => {
+      const paramElement = item.querySelector(`.unitParams__${params[key]} .unitParams__item__value`);
+      if (paramElement) {
+        status[key] = parseInt(paramElement.textContent, 10);
       }
     });
+
     status.ATK = parseInt(status.PHY + status.INT, 10);
     status.DEF = parseInt(status.VIT + status.MND, 10);
     
